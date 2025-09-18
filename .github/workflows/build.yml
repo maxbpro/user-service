@@ -29,8 +29,9 @@ jobs:
         run: ./gradlew bootBuildImage --imagePlatform linux/arm64
       - name: Tag & publish to GitHub Container Registry
         run: |
+          IMAGE_VERSION = 1.0.0
           VERSION=1.0.${{ github.run_number }}
-          IMAGE_NAME=docker.io/library/user-service:$VERSION
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+          IMAGE_NAME=docker.io/library/user-service:$IMAGE_VERSION
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/docker.io/library/user-service:$VERSION
           docker tag $IMAGE_NAME $IMAGE_ID
           docker push $IMAGE_ID
