@@ -15,5 +15,6 @@ spec:
       containers:
         - name: {{ .Values.appName }}
           image: ghcr.io/maxbpro/user-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.appPort }}
