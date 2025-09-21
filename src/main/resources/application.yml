@@ -23,7 +23,7 @@ spring:
       sampling:
         probability: 1.0
       otlp:
-        endpoint: http://alloy:4318
+        endpoint: http://localhost:4318
         protocol: http/protobuf
 
 
