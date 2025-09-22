@@ -20,10 +20,4 @@ public class UserController {
         log.info("Test Hello World");
         return "Hello World";
     }
-
-    @GetMapping("/hello")
-    public String hello() {
-        log.info("Test Hello World");
-        return "Hello World";
-    }
 }
