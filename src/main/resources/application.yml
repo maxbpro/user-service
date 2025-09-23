@@ -4,27 +4,34 @@ server:
 spring:
   application:
     name: user-service
-  management:
-    server:
-      port: 8080
-    endpoints:
-      web:
-        exposure:
-          include: "*"
+
+management:
+  server:
+    port: 8080
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    prometheus:
+      access: read_only
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://alloy.monitoring:4318
+      transport: http
+  prometheus:
     metrics:
       export:
-        prometheus:
-          enabled: true
-    endpoint:
-      prometheus:
         enabled: true
-    tracing:
-      enabled: true
-      sampling:
-        probability: 1.0
-      otlp:
-        endpoint: http://alloy.monitoring:4318
-        protocol: http/protobuf
+
+#otel:
+#  exporter:
+#    otlp:
+#      protocol: http/protobuf
 
 
 
