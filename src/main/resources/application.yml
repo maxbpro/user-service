@@ -22,16 +22,16 @@ management:
   otlp:
     tracing:
       endpoint: http://alloy.monitoring:4318
-      transport: http
   prometheus:
     metrics:
       export:
         enabled: true
 
-#otel:
-#  exporter:
-#    otlp:
-#      protocol: http/protobuf
+otel:
+  exporter:
+    otlp:
+      protocol: http/protobuf
+      endpoint: http://alloy.monitoring:4318
 
 
 
