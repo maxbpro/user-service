@@ -27,17 +27,17 @@ management:
       export:
         enabled: true
 
-otel:
-  exporter:
-    otlp:
-      protocol: http/protobuf
-      endpoint: http://alloy.monitoring.svc.cluster.local:4318
-      traces:
-        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/traces
-      logs:
-        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/logs
-      metrics:
-        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/metrics
-
+#otel:
+#  exporter:
+#    otlp:
+#      protocol: http/protobuf
+#      endpoint: http://alloy.monitoring.svc.cluster.local:4318
+#      traces:
+#        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/traces
+#      logs:
+#        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/logs
+#      metrics:
+#        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/metrics
+#
 
 
