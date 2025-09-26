@@ -21,7 +21,7 @@ management:
       probability: 1.0
   otlp:
     tracing:
-      endpoint: http://alloy.monitoring.svc.cluster.local:4318
+      endpoint: http://alloy.monitoring:4318/v1/traces
   prometheus:
     metrics:
       export:
@@ -31,7 +31,7 @@ otel:
   exporter:
     otlp:
       protocol: http/protobuf
-      endpoint: http://alloy.monitoring.svc.cluster.local:4318
+      endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/traces
 #      traces:
 #        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/traces
 #      logs:
