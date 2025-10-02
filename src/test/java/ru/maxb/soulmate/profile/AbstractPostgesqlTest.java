@@ -18,14 +18,14 @@ import java.time.temporal.ChronoUnit;
 public class AbstractPostgesqlTest {
 
     private static final int POSTGRES_PORT = 5432;
-    private static final String POSTGRES_DATABASE_NAME = "profile";
+    private static final String POSTGRES_DATABASE_NAME = "profileDatabase";
 
     private static PostgreSQLContainer postgresqlContainer =
             new PostgreSQLContainer<>("postgres:18-alpine")
                     .withExposedPorts(POSTGRES_PORT)
                     .withDatabaseName(POSTGRES_DATABASE_NAME)
-                    .withUsername("testuser")
-                    .withPassword("testpassword")
+                    .withUsername("customer")
+                    .withPassword("password")
                     .withReuse(true)
                     .withNetworkAliases("postgres");
 
