@@ -11,6 +11,8 @@ spring:
   liquibase:
     enabled: true
     change-log: db/changelog/master.xml
+    default-schema: profile
+    liquibase-schema: profile
   jpa:
     hibernate:
       ddl-auto: validate
