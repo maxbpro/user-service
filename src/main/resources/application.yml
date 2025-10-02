@@ -1,13 +1,42 @@
 server:
-  port: 8080
+  port: 8082
 
 spring:
   application:
     name: user-service
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/profile
+    username: testuser
+    password: testpassword
+  liquibase:
+    enabled: true
+    change-log: db/changelog/master.xml
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      org.hibernate:
+        envers:
+          autoRegisterListeners: true
+          audit_table_suffix: _history
+          default_schema: profile_service_history
+          store_data_at_delete: true
+          revision_field_name: revision
+          revision_type_field_name: revision_type
+          revision_sequence_name: profile_service_history.revinfo_seq
+        hibernate:
+          default_schema: profile
+          show_sql: ${SHOW_SQL:true}
+          format_sql: ${FORMAT_SQL:true}
+          highlight_sql: ${HIGHLIGHT_SQL:true}
+          session.events.log.LOG_QUERIES_SLOWER_THAN_MS: ${SLOW_SQL_QUERY_INDICATOR_MS:1500}
+          hbm2ddl:
+            auto: validate
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 management:
   server:
-    port: 8080
+    port: 8082
   endpoints:
     web:
       exposure:
@@ -19,9 +48,6 @@ management:
     enabled: true
     sampling:
       probability: 1.0
-  otlp:
-    tracing:
-      endpoint: http://10.43.156.215:4318/v1/traces
   prometheus:
     metrics:
       export:
@@ -30,14 +56,12 @@ management:
 otel:
   exporter:
     otlp:
+      endpoint: http://alloy.monitoring.svc.cluster.local:4318
       protocol: http/protobuf
-      endpoint: http://10.43.156.215:4318
-#      traces:
-#        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/traces
-#      logs:
-#        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/logs
-#      metrics:
-#        endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/metrics
+  logs:
+    exporter: none
+  metrics:
+    exporter: none
 
 
 

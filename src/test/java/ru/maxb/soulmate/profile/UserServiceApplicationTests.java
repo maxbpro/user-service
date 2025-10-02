@@ -1,4 +1,4 @@
-package ru.maxb.soulmate.user;
+package ru.maxb.soulmate.profile;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
