@@ -22,4 +22,4 @@ spec:
             - name: POSTGRES_HOST
               value: {{ .Values.postgresqlHost }}
             - name: POSTGRES_PORT
-              value: {{ .Values.postgresqlPort }}
+              value: "{{ .Values.postgresqlPort }}"
